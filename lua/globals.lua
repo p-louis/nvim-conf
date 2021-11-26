@@ -11,7 +11,7 @@ O = {
 
     -- @usage pass a table with your desired languages
     treesitter = {
-        ensure_installed = { "kotlin", "json", "yaml", "java", "bash", "lua", "vim", "python", "bibtex", "latex", "elm", "scss", "dockerfile", "css" },
+        ensure_installed = "all",
         ignore_install = {},
         highlight = {enabled = false},
         playground = {enabled = false},

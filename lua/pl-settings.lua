@@ -18,8 +18,8 @@ O.timeoutlen = 100
 -- O.dashboard.footer = {""}
 
 -- if you don't want all the parsers change this to a table of the ones you want
-O.treesitter.ensure_installed = { "kotlin", "json", "yaml", "java", "bash", "lua", "python", "bibtex", "latex", "elm", "scss", "dockerfile", "css", "html", "javascript" }
-O.treesitter.ignore_install = {"haskell", "ocaml", "ruby", "r", "ocaml_interface"}
+O.treesitter.ensure_installed = "all"
+O.treesitter.ignore_install = {}
 O.treesitter.highlight.enabled = true
 
 

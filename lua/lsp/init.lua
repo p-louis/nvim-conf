@@ -108,6 +108,19 @@ function lsp_config.tsserver_on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
 end
 
+require"lspconfig".jsonls.setup {
+  cmd = { '/path/to/json-languageserver', '--stdio' },
+
+  -- Set the schema so that it can be completed in settings json file.
+  -- The schemas defined in `jsonls.json` will be merged with the list configured here.
+  settings = {
+    json = {
+      schemas = require'nlspsettings.jsonls'.get_default_schemas()
+    }
+  }
+}
+
+require'nlspsettings'.setup()
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 -- local servers = {"pyright", "tsserver"}
