@@ -59,8 +59,10 @@ return require('packer').startup(function()
 
     -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/playground'
     use 'windwp/nvim-ts-autotag'
     use 'purescript-contrib/purescript-vim'
+    use 'p00f/nvim-ts-rainbow'
 
     -- Gitsigns
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -81,6 +83,7 @@ return require('packer').startup(function()
 
     -- Colorschemes
     use 'ChristianChiarulli/nvcode-color-schemes.vim'
+    use 'EdenEast/nightfox.nvim'
 
     use 'norcalli/nvim-colorizer.lua'
 end)

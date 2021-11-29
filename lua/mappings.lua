@@ -16,11 +16,11 @@ vim.api.nvim_set_keymap('n', '<Leader>/', ':bd<CR>', { noremap = true, silent = 
 
 
 -- Searching
-vim.api.nvim_set_keymap('n', '<Leader>rf', ':Files<CR>', { noremap = false, silent = false })
-vim.api.nvim_set_keymap('n', '<Leader>rb', ':Buffers<CR>', { noremap = false, silent = false })
-vim.api.nvim_set_keymap('n', '<Leader>rg', ':RG<CR>', { noremap = false, silent = false })
-vim.api.nvim_set_keymap('n', '<Leader>rt', ':Tags<CR>', { noremap = false, silent = false })
-vim.api.nvim_set_keymap('n', '<Leader>rm', ':Marks<CR>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('n', '<Leader>rf', ':Telescope git_files<CR>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('n', '<Leader>rb', ':Telescope buffers<CR>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('n', '<Leader>rg', ':Telescope grep_string<CR>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('n', '<Leader>rt', ':Telescope tags<CR>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('n', '<Leader>rm', ':Telescope marks<CR>', { noremap = false, silent = false })
 
 -- Window movement
 vim.api.nvim_set_keymap('i', '<C-h>', '<C-w>h', { noremap = false, silent = false })
