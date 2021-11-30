@@ -71,131 +71,163 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["barbar.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/barbar.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/friendly-snippets"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   fzf = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/fzf"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/fzf",
+    url = "https://github.com/junegunn/fzf"
   },
   ["fzf.vim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/fzf.vim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    url = "https://github.com/junegunn/fzf.vim"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/galaxyline.nvim",
+    url = "https://github.com/glepnir/galaxyline.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
   },
   ["nlsp-settings.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
+    url = "https://github.com/tamago324/nlsp-settings.nvim"
   },
   ["nvcode-color-schemes.vim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim",
+    url = "https://github.com/ChristianChiarulli/nvcode-color-schemes.vim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-compe",
+    url = "https://github.com/hrsh7th/nvim-compe"
   },
   ["nvim-dap"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-dap"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-dap-virtual-text"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-lspinstall",
+    url = "https://github.com/kabouzeid/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-ts-autotag"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["purescript-vim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/purescript-vim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/purescript-vim",
+    url = "https://github.com/purescript-contrib/purescript-vim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-closetag"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-closetag"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-closetag",
+    url = "https://github.com/alvan/vim-closetag"
   },
   ["vim-devicons"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-devicons"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-devicons",
+    url = "https://github.com/ryanoasis/vim-devicons"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-ripgrep"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-ripgrep"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-ripgrep",
+    url = "https://github.com/jremmen/vim-ripgrep"
   },
   ["vim-rooter"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-rooter"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-rooter",
+    url = "https://github.com/airblade/vim-rooter"
   },
   ["vim-test"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-test"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
   },
   ["vim-vsnip"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   },
   ["which-key.nvim"] = {
     loaded = true,
-    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/which-key.nvim"
+    path = "/home/plouis/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

@@ -53,6 +53,20 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'  
     use 'kdheepak/lazygit.nvim'
 
+    -- Vimwiki
+    use 'vimwiki/vimwiki'
+    use 'godlygeek/tabular'
+    use 'plasticboy/vim-markdown'
+    use 'tools-life/taskwiki'
+
+    -- Surround
+    use 'tpope/vim-surround'
+    use 'tpope/vim-commentary'
+    use 'christoomey/vim-sort-motion'
+    use 'christoomey/vim-system-copy'
+
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
     -------------------------------
     -- Optics
     -------------------------------
