@@ -18,6 +18,9 @@ require'lspinstall/servers'.jdtls = vim.tbl_extend('error', config, {
 require'lspinstall/servers'.kotlin = vim.tbl_extend('error', config, {
     install_script = [[
       git clone https://github.com/fwcd/kotlin-language-server.git language-server
+      git fetch --tags
+      latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+      git checkout $latestTag
       cd language-server
 	  ./gradlew :server:installDist
   ]],

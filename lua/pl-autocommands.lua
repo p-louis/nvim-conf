@@ -1,6 +1,6 @@
 local utils = require('pl-utils')
 
-local auto_formatters = {            }
+local auto_formatters = {}
 
 local python_autoformat = {'BufWritePre', '*.py', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
 if O.python.autoformat then table.insert(auto_formatters, python_autoformat) end

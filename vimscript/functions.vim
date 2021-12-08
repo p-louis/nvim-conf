@@ -25,3 +25,17 @@ command! -bang -nargs=* GGrep
 
 
 tnoremap <Esc> <C-\><C-N>
+
+function! Scratch()
+    split
+    noswapfile hide enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    "setlocal nobuflisted
+    "lcd ~
+    file scratch
+endfunction
+
+command! -nargs=* -bang Scratch call Scratch()
+
+nnoremap <Leader>sn :Scratch<CR>

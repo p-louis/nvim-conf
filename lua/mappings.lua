@@ -3,17 +3,15 @@ vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true
 vim.g.mapleader = ' '
 
 -- Search highlighting
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true }) 
+vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
 
 -- Explore
-vim.api.nvim_set_keymap('n', '<Leader>e', ':Lexplore<CR>', { noremap = true, silent = true }) 
-
+vim.api.nvim_set_keymap('n', '<Leader>e', ':Lexplore<CR>', { noremap = true, silent = true })
 
 -- Buffer juggling
-vim.api.nvim_set_keymap('n', '<Leader>,', ':bn<CR>', { noremap = true, silent = true }) 
-vim.api.nvim_set_keymap('n', '<Leader>.', ':bp<CR>', { noremap = true, silent = true }) 
-vim.api.nvim_set_keymap('n', '<Leader>/', ':bd<CR>', { noremap = true, silent = true }) 
-
+vim.api.nvim_set_keymap('n', '<Leader>,', ':bn<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>.', ':bp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>/', ':bd<CR>', { noremap = true, silent = true })
 
 -- Searching
 vim.api.nvim_set_keymap('n', '<Leader>rf', ':Telescope git_files<CR>', { noremap = false, silent = false })
@@ -31,4 +29,3 @@ vim.api.nvim_set_keymap('i', '<C-l>', '<C-w>l', { noremap = false, silent = fals
 -- Better indenting
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = false })
-
