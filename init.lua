@@ -193,6 +193,22 @@ require('lazy').setup({
       require('ibl').setup()
     end,
   },
+  {
+    'ThePrimeagen/git-worktree.nvim',
+    config = function()
+      require("git-worktree").setup()
+    end,
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -546,6 +562,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'git_worktree')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -792,6 +809,9 @@ require('nvim-tree').setup()
 vim.keymap.set('n', '<C-n>', "<cmd>NvimTreeToggle<CR>", { desc = 'Toggle Nvim-Tree' })
 vim.keymap.set('n', '<M-n>', "<cmd>NvimTreeFocus<CR>", { desc = 'Focus Nvim-Tree' })
 
+-- [[ Configure git worktrees ]]
+vim.keymap.set('n', '<leader>ft', function() require('telescope').extensions.git_worktree.git_worktrees() end,
+  { desc = '[F]ind Git-Work[T]rees' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
