@@ -39,3 +39,5 @@ vim.keymap.set('n', '<leader>p', '"+p', { desc = "Paste from system clipboard" }
 vim.keymap.set('n', '<leader>P', '"+P', { desc = "Paste from system clipboard" })
 
 vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
+
+vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = '[G]it [S]tatus' })
