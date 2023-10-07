@@ -30,3 +30,12 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]odelens 
 
 -- Great remap!
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep copied text' })
+
+-- Clipboard interactions
+vim.keymap.set('n', '<leader>y', '"+y', { desc = "Yank into system clipboard" })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = "Yank into system clipboard" })
+vim.keymap.set('v', '<leader>Y', '"+Y', { desc = "Yank into system clipboard" })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set('n', '<leader>P', '"+P', { desc = "Paste from system clipboard" })
+
+vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
