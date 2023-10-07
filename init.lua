@@ -21,10 +21,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-    -- NOTE: First, some plugins that don't require any configuration
-
     -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
@@ -448,8 +445,7 @@ require('lazy').setup({
     -- { import = 'custom.plugins' },
 }, {})
 
-require('set')
-
+require('settings')
 require('mappings')
 
 -- [[ Highlight on yank ]]
