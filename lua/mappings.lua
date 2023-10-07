@@ -42,5 +42,5 @@ vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 
 vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = '[G]it [S]tatus' })
 
-vim.keymap.set('n', 'gh', '<cmd>diffget //2<CR>', { desc = 'Get left change' })
-vim.keymap.set('n', 'gl', '<cmd>diffget //3<CR>', { desc = 'Get right change' })
+vim.keymap.set('n', 'gt', '<cmd>diffget //2<CR>', { desc = 'Get left change' })
+vim.keymap.set('n', 'gn', '<cmd>diffget //3<CR>', { desc = 'Get right change' })
