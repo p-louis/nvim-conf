@@ -1,8 +1,9 @@
 -- [[ Basic Keymaps ]]
 vim.keymap.set('n', '<leader>pv', ':Ex<CR>', { desc = 'NetRW' })
 
-vim.keymap.set('v', 'J', ':m >+1<CR>gv=gv', { desc = 'Move selection down' })
-vim.keymap.set('v', 'J', ':m <-2<CR>gv=gv', { desc = 'Move selection down' })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection down' })
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -26,3 +27,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>crf', vim.lsp.codelens.refresh, { desc = '[C]odelens [R]e[f]resh' })
 vim.keymap.set('n', '<leader>cr', vim.lsp.codelens.run, { desc = '[C]odelens [R]un' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]odelens [R]un' })
+
+-- Great remap!
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep copied text' })
