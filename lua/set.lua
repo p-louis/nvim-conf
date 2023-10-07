@@ -4,6 +4,7 @@
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -11,6 +12,18 @@ vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
+vim.o.wrap = false
+
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = os.getenv("XDG_DATA_HOME") .. "/vim/undodir"
+vim.o.undofile = true
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -31,7 +44,7 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -39,4 +52,3 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
