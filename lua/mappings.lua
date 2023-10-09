@@ -27,6 +27,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>crf', vim.lsp.codelens.refresh, { desc = '[C]odelens [R]e[f]resh' })
 vim.keymap.set('n', '<leader>cr', vim.lsp.codelens.run, { desc = '[C]odelens [R]un' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]odelens [R]un' })
+vim.keymap.set('n', '<leader>ra', vim.lsp.buf.rename, { desc = '[R]ename [A]ll' })
 
 -- Great remap!
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep copied text' })
