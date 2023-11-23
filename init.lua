@@ -32,6 +32,11 @@ require('lazy').setup({
   -- 'tpope/vim-sleuth',
 
   {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
+  {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -145,6 +150,15 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'LhKipp/nvim-nu',
+    config = function()
+      require('nu').setup({
+        use_lsp_features = true,
+        all_cmd_names = [[nu -c 'help commands | get name | str join "\n"']]
+      })
+    end,
+  },
 
   {
     -- Set lualine as statusline
@@ -177,16 +191,6 @@ require('lazy').setup({
     'ThePrimeagen/git-worktree.nvim',
     config = function()
       require("git-worktree").setup()
-    end,
-  },
-  {
-    "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("refactoring").setup()
     end,
   },
 
