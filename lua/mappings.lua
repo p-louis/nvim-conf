@@ -41,7 +41,13 @@ vim.keymap.set('n', '<leader>P', '"+P', { desc = "Paste from system clipboard" }
 
 vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
+-- Fugitive bindings
 vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = '[G]it [S]tatus' })
+
+vim.keymap.set('n', '<leader>gp', ':Git push -u origin', { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>gP', function()
+    vim.cmd.Git({ 'pull', '--rebase' })
+end, { desc = '[G]it [P]ull' })
 
 vim.keymap.set('n', 'gt', '<cmd>diffget //2<CR>', { desc = 'Get left change' })
 vim.keymap.set('n', 'gn', '<cmd>diffget //3<CR>', { desc = 'Get right change' })
