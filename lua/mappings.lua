@@ -24,10 +24,10 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('n', '<leader>crf', vim.lsp.codelens.refresh, { desc = '[C]odelens [R]e[f]resh' })
-vim.keymap.set('n', '<leader>cr', vim.lsp.codelens.run, { desc = '[C]odelens [R]un' })
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]odelens [R]un' })
-vim.keymap.set('n', '<leader>ra', vim.lsp.buf.rename, { desc = '[R]ename [A]ll' })
+vim.keymap.set('n', '<leader>lcrf', vim.lsp.codelens.refresh, { desc = '[C]odelens [R]e[f]resh' })
+vim.keymap.set('n', '<leader>lcr', vim.lsp.codelens.run, { desc = '[C]odelens [R]un' })
+vim.keymap.set('n', '<leader>lca', vim.lsp.buf.code_action, { desc = '[C]odelens [R]un' })
+vim.keymap.set('n', '<leader>lrn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
 -- Great remap!
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep copied text' })

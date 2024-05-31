@@ -264,6 +264,7 @@ require('lazy').setup({
 
       -- Add your own debuggers here
       'leoluz/nvim-dap-go',
+      "Mgenuit/nvim-dap-kotlin",
     },
     config = function()
       local dap = require 'dap'
@@ -286,7 +287,8 @@ require('lazy').setup({
         -- online, please don't ask me how to install them :)
         ensure_installed = {
           -- Update this to ensure that you have the debuggers for the langs you want
-          'delve',
+          'kotlin',
+          'go',
         },
       }
 
@@ -321,7 +323,7 @@ require('lazy').setup({
           },
         },
       }
-      vim.keymap.set('n', '<leader>ds', sidebar.open, { desc = 'Open debugging sidebar' })
+      vim.keymap.set('n', '<leader>du', sidebar.open, { desc = 'Open debugging sidebar' })
       -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
       vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
@@ -460,5 +462,25 @@ require('lsp')
 vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
   { desc = "Generate Random UID" })
 
+
+require('dap').adapters.kotlin = {
+  type = 'executable',
+  command = 'kotlin-debug-adapter',
+  options = {
+    initialize_timeout_sec = 15,
+    disconnect_timeout_sec = 15,
+    auto_continue_if_many_stopped = false,
+  },
+}
+
+require('dap').configurations.kotlin = {
+  {
+    type = 'kotlin',
+    request = 'launch',
+    name = 'Application',
+    mainClass = 'io.ktor.server.jetty.EngineMain',
+    projectRoot = '${workspaceFolder}',
+  },
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
