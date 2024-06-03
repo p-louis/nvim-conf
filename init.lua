@@ -184,11 +184,11 @@ require('lazy').setup({
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = '' },
+        change = { text = '' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '' },
       },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
@@ -215,8 +215,17 @@ require('lazy').setup({
     'catppuccin/nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
-    end,
+      require('catppuccin').setup({
+        flavour = 'frappe',
+        transparent_background = false,
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          telescope = true,
+          treesitter = true,
+        }
+      })
+    end
   },
 
   {
@@ -380,15 +389,15 @@ require('lazy').setup({
         icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
         controls = {
           icons = {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
+            pause = '',
+            play = '',
+            step_into = '',
+            step_over = '',
+            step_out = '',
+            step_back = '',
+            run_last = '',
+            terminate = '',
+            disconnect = '',
           },
         },
       }
@@ -454,7 +463,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>mdp', '<cmd>Glow<CR>', { desc = 'Preview Markdown' })
     end,
     ft = "markdown",
-    cmd = "Glow"
+    cmd = "Glow",
+    lazy = true,
   },
   {
     "nvim-neorg/neorg",
@@ -551,5 +561,8 @@ require('dap').configurations.kotlin = {
     projectRoot = '${workspaceFolder}',
   },
 }
+
+-- Colorscheme
+vim.cmd('colorscheme catppuccin')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
