@@ -46,5 +46,5 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[F]ind [B]uffer' })
 vim.keymap.set('n', '<leader>ft', require('telescope').extensions.git_worktree.git_worktrees,
   { desc = '[F]ind Git-Work[T]rees' })
-
+vim.keymap.set('n', '<leader>fc', '<Cmd>TodoTelescope<CR>', { desc = '[F]ind TODO [C]omments' })
 
