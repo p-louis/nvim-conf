@@ -467,64 +467,52 @@ require('lazy').setup({
     cmd = "Glow",
     lazy = true,
   },
-  {
-    "nvim-neorg/neorg",
-    cmd = "Neorg",
-    ft = "norg",
-    run = ":Neorg sync-parsers", -- This is the important bit!
-    config = function()
-      require('neorg').setup {
-        load = {
-          ["core.defaults"] = {},
-          ['core.neorgcmd'] = {},
-          ['core.summary'] = {},
-          ['core.journal'] = {},
-          ['core.autocommands'] = {},
-          ["core.concealer"] = {},
-          ['core.integrations.treesitter'] = { config = {} },
-          ['core.ui'] = {},
-          ['core.presenter'] = {
-            config = {
-              zen_mode = "zen-mode",
-            }
-          },
-          --['core.ui.calendar'] = {}, -- Currently broken, requires nvim 0.10+
-          ['core.completion'] = {
-            config = {
-              engine = "nvim-cmp",
-              name = "[Neorg]",
-            },
-          },
-          ["core.dirman"] = {
-            config = {
-              workspaces = {
-                work = "~/.local/share/notes/work",
-                home = "~/.local/share/notes/home",
-              },
-              default_workspace = "work",
-            }
-          },
-          ["core.keybinds"] = {
-            config = {
-              default_keybinds = true,
-              neorg_leader = " ",
-              hook = function(keybinds)
-                keybinds.map("norg", "n", "<leader>nps",
-                  "<cmd>Neorg presenter start<CR>")
-              end,
-            },
-          },
-        },
-      }
-    end,
-    dependencies = { { "nvim-lua/plenary.nvim" } }
-  },
 
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({
+        -- See Setup section below
+      })
+    end
+  },
   -- { import = 'custom.plugins' },
 }, {})
 
 require('settings')
 require('mappings')
+
+
+require("zk").setup({
+  -- can be "telescope", "fzf", "fzf_lua", "minipick", or "select" (`vim.ui.select`)
+  -- it's recommended to use "telescope", "fzf", "fzf_lua", or "minipick"
+  picker = "telescope",
+
+  lsp = {
+    -- `config` is passed to `vim.lsp.start_client(config)`
+    config = {
+      cmd = { "zk", "lsp" },
+      name = "zk",
+      -- on_attach = ...
+      -- etc, see `:h vim.lsp.start_client()`
+    },
+
+    -- automatically attach buffers in a zk notebook that match the given filetypes
+    auto_attach = {
+      enabled = true,
+      filetypes = { "markdown" },
+    },
+  },
+})
+
+vim.keymap.set('n', '<leader>nn', ':ZkNew<CR>', { desc = '[N]ew [N]ote' })
+vim.keymap.set('n', '<leader>nfn', ':ZkNotes<CR>', { desc = '[F]ind [N]otes by Title' })
+vim.keymap.set('n', '<leader>nft', ':ZkTags<CR>', { desc = '[F]ind [N]otes by Tag' })
+vim.keymap.set('n', '<leader>nfl', ':ZkLinks<CR>', { desc = '[F]ind [N]otes by Links' })
+vim.keymap.set('n', '<leader>nl', ':ZkInsertLink<CR>', { desc = '[N]ote insert [L]ink' })
+vim.keymap.set('v', '<leader>nfc', ':ZkMatch<CR>', { desc = '[F]ind [N]otes by Content' })
+vim.keymap.set('v', '<leader>nc', ':ZkNewFromContentSelection<CR>', { desc = '[N]ote from [C]ontent' })
+vim.keymap.set('v', '<leader>nt', ':ZkNewFromTitleSelection<CR>', { desc = '[N]ote from [T]itle' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
