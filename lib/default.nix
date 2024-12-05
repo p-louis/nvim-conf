@@ -30,7 +30,7 @@ in rec {
     vimPlugins.nvim-lspconfig
     vimPlugins.nvim-treesitter.withAllGrammars
     vimPlugins.rust-tools-nvim
-    vimPlugins.rust-nvim
+    vimPlugins.rust-vim
     vimPlugins.vim-just
     vimPlugins.indent-blankline-nvim
     vimPlugins.zk-nvim
