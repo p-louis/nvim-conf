@@ -29,31 +29,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-require('lsp')
+require('Fuzzel.lsp')
+require('Fuzzel.mappings')
+require('Fuzzel.settings')
 
-vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
+vcomment-nvimim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
   { desc = "Generate Random UID" })
-
-
-require('dap').adapters.kotlin = {
-  type = 'executable',
-  command = 'kotlin-debug-adapter',
-  options = {
-    initialize_timeout_sec = 15,
-    disconnect_timeout_sec = 15,
-    auto_continue_if_many_stopped = false,
-  },
-}
-
-require('dap').configurations.kotlin = {
-  {
-    type = 'kotlin',
-    request = 'launch',
-    name = 'Application',
-    mainClass = 'io.ktor.server.jetty.EngineMain',
-    projectRoot = '${workspaceFolder}',
-  },
-}
 
 -- Colorscheme
 vim.cmd('colorscheme catppuccin')
