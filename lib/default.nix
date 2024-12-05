@@ -41,11 +41,6 @@ in rec {
     vimPlugins.cmp-nvim-lsp
     vimPlugins.friendly-snippets
 
-    # Mason
-    vimPlugins.mason-nvim
-    vimPlugins.mason-lspconfig-nvim
-    vimPlugins.mason-tool-installer-nvim
-
     # telescope
     vimPlugins.plenary-nvim
     vimPlugins.telescope-nvim
@@ -104,6 +99,7 @@ in rec {
     pkgs.nil
     pkgs.nls
     pkgs.postgres-lsp
+    pkgs.rust-analyzer
     pkgs.pyright
     pkgs.terraform-ls
 

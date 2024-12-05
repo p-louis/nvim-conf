@@ -1,12 +1,11 @@
+local lspconfig = require 'lspconfig'
+local omnisharp_extended = require 'omnisharp_extended'
+local rust_tools = require 'rust-tools'
+local treesitter = require 'nvim-treesitter.configs'
+local treesitter_context = require 'treesitter-context'
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -37,6 +36,10 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
+  nmap("<C-space>", rust_tools.hover_actions.hover_actions, 'Hover Actions' )
+  -- Code action groups
+  nmap("<Leader>a", rust_tools.code_action_group.code_action_group, 'Code Action Group')
+
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -51,21 +54,87 @@ end
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
-local servers = {
-  clangd = {},
-  gopls = {},
-  -- pyright = {},
-  rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs' } },
-
+local language_servers = {
+  bashls = {},
+  cssls = {},
+  dhall_lsp_server = {},
+  dockerls = {},
+  gopls = {
+    settings = {
+      gopls = {
+        gofumpt = true,
+      },
+    },
+  },
+  html = {},
+  jsonls = {},
+  jsonnet_ls = {},
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        },
+        runtime = {
+          version = 'LuaJIT',
+        },
+        telemetry = {
+          enable = false,
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+      },
+    }
+  },
+  nickel_ls = {},
+  nil_ls = {
+    settings = {
+      ['nil'] = {
+        formatting = { command = { "alejandra" } },
+      },
+    }
+  },
+  ocamllsp = {},
+  omnisharp = {
+    cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+    handlers = {
+      ["textDocument/definition"] = omnisharp_extended.handler,
+    },
+  },
+  postgres_lsp = {},
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          diagnosticMode = "workspace",
+          useLibraryCodeForTypes = true
+        },
+      },
+    },
+  },
+  terraformls = {},
+  ts_ls = {},
+  yamlls = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
     },
   },
 }
+for server, server_config in pairs(language_servers) do
+        local config = { on_attach = on_attach }
+
+        if server_config then
+            for k, v in pairs(server_config) do
+                config[k] = v
+            end
+        end
+
+        lspconfig[server].setup(config)
+    end
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -73,25 +142,6 @@ require('neodev').setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
--- Ensure the servers above are installed
-require('mason').setup()
-local mason_lspconfig = require 'mason-lspconfig'
-
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end
-}
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
@@ -129,6 +179,59 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- Rust Stuff
+rust_tools.setup({
+  executor = require("rust-tools.executors").termopen,
+  server = {
+    on_attach = on_attach,
+    ['rust-analyzer'] = {
+      cargo = {
+        autoReload = true
+      }
+    }
+  },
+  dap = {
+    adapter = {
+      type = "executable",
+      command = "lldb-vscode",
+      name = "rt_lldb",
+    },
+  },
+})
+
+-- ZK stuff
+require("zk").setup({
+  -- can be "telescope", "fzf", "fzf_lua", "minipick", or "select" (`vim.ui.select`)
+  -- it's recommended to use "telescope", "fzf", "fzf_lua", or "minipick"
+  picker = "telescope",
+
+  lsp = {
+    -- `config` is passed to `vim.lsp.start_client(config)`
+    config = {
+      cmd = { "zk", "lsp" },
+      name = "zk",
+      -- on_attach = ...
+      -- etc, see `:h vim.lsp.start_client()`
+    },
+
+    -- automatically attach buffers in a zk notebook that match the given filetypes
+    auto_attach = {
+      enabled = true,
+      filetypes = { "markdown" },
+    },
+  },
+})
+
+vim.keymap.set('n', '<leader>nn', ':ZkNew<CR>', { desc = '[N]ew [N]ote' })
+vim.keymap.set('n', '<leader>nfn', ':ZkNotes<CR>', { desc = '[F]ind [N]otes by Title' })
+vim.keymap.set('n', '<leader>nft', ':ZkTags<CR>', { desc = '[F]ind [N]otes by Tag' })
+vim.keymap.set('n', '<leader>nfl', ':ZkLinks<CR>', { desc = '[F]ind [N]otes by Links' })
+vim.keymap.set('n', '<leader>nl', ':ZkInsertLink<CR>', { desc = '[N]ote insert [L]ink' })
+vim.keymap.set('v', '<leader>nfc', ':ZkMatch<CR>', { desc = '[F]ind [N]otes by Content' })
+vim.keymap.set('v', '<leader>nc', ':ZkNewFromContentSelection<CR>', { desc = '[N]ote from [C]ontent' })
+vim.keymap.set('v', '<leader>nt', ':ZkNewFromTitleSelection<CR>', { desc = '[N]ote from [T]itle' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
