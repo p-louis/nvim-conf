@@ -35,6 +35,8 @@ in rec {
     vimPlugins.indent-blankline-nvim
     vimPlugins.zk-nvim
     vimPlugins.neodev-nvim
+    vimPlugins.cmp-nvim-lsp
+    vimPlugins.cmp-nvim-lua
 
     # telescope
     vimPlugins.plenary-nvim
