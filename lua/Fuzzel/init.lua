@@ -75,6 +75,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('Fuzzel.lsp')
 require('Fuzzel.mappings')
 require('Fuzzel.settings')
+require('Fuzzel.telescope')
+require('Fuzzel.treesitter')
+require('Fuzzel.undotree')
 
 vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
 { desc = "Generate Random UID" })
