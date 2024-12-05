@@ -48,6 +48,7 @@ in rec {
 
     # extras
     vimPlugins.comment-nvim
+    vimPlugins.catppuccin-nvim
     vimPlugins.gitsigns-nvim
     vimPlugins.lualine-nvim
     vimPlugins.noice-nvim
