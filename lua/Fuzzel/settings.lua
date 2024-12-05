@@ -56,3 +56,11 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 8
 
 -- vim.o.colorcolumn = 80
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.nix"},
+  callback = function ()
+        vim.o.sw = 2
+        vim.o.ts = 2
+        vim.o.sts = 2
+    end
+})
