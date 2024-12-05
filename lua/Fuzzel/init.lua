@@ -6,8 +6,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require("todo-comments").setup()
-require("fugitive").setup()
-require("rhubarb").setup()
 
 require("lualine").setup {
 options = {
