@@ -30,11 +30,15 @@ in rec {
     vimPlugins.nvim-lspconfig
     vimPlugins.nvim-treesitter.withAllGrammars
     vimPlugins.rust-tools-nvim
+    vimPlugins.rust-nvim
     vimPlugins.vim-just
+    vimPlugins.indent-blankline-nvim
+    vimPlugins.zk-nvim
 
     # telescope
     vimPlugins.plenary-nvim
     vimPlugins.telescope-nvim
+    vimPlugins.git-worktree-nvim
 
     # theme
     vimPlugins.tokyonight-nvim
