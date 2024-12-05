@@ -1,4 +1,3 @@
-local function init()
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -65,10 +64,5 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
         vim.o.sts = 2
     end
 })
-end
-
-return {
-  init = init,
-}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

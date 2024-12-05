@@ -1,1 +1,1 @@
-require 'Fuzzel'.init()
+require('Fuzzel')

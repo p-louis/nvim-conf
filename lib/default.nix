@@ -105,7 +105,7 @@ in rec {
 
   mkExtraConfig = ''
     lua << EOF
-      require 'Fuzzel'.init()
+      require('Fuzzel')
     EOF
   '';
 
