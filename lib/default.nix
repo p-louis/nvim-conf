@@ -35,8 +35,10 @@ in rec {
     vimPlugins.indent-blankline-nvim
     vimPlugins.zk-nvim
     vimPlugins.neodev-nvim
+    vimPlugins.nvim-cmp
     vimPlugins.cmp-nvim-lsp
     vimPlugins.cmp-nvim-lua
+
     vimPlugins.mason-nvim
     vimPlugins.mason-lspconfig-nvim
     vimPlugins.mason-tool-installer-nvim
