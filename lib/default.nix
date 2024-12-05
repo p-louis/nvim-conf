@@ -39,7 +39,7 @@ in rec {
     vimPlugins.cmp-nvim-lua
     vimPlugins.mason-nvim
     vimPlugins.mason-lspconfig-nvim
-    vimPlugins.mason-toolinstaller-nvim
+    vimPlugins.mason-tool-installer-nvim
 
     # telescope
     vimPlugins.plenary-nvim
