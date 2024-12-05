@@ -137,4 +137,17 @@ in rec {
       withPython3 = true;
       withRuby = true;
     };
+
+  mkHomeManager = {system}: let
+    extraConfig = mkExtraConfig;
+    extraPackages = mkExtraPackages {inherit system;};
+    plugins = mkNeovimPlugins {inherit system;};
+  in {
+    inherit extraConfig extraPackages plugins;
+    defaultEditor = true;
+    enable = true;
+    withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
+  };
 }
