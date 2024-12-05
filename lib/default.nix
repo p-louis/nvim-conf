@@ -64,6 +64,7 @@ in rec {
     vimPlugins.vim-floaterm
 
     # extras
+    vimPlugins.todo-comments-nvim
     vimPlugins.comment-nvim
     vimPlugins.lualine-nvim
     vimPlugins.which-key-nvim
