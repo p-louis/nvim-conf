@@ -34,7 +34,7 @@ local function init()
   require('Fuzzel.mappings').init()
   require('Fuzzel.settings').init()
 
-  vcomment-nvimim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
+  vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
   { desc = "Generate Random UID" })
 
   -- Colorscheme
