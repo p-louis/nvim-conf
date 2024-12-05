@@ -57,7 +57,6 @@ in rec {
     vimPlugins.vim-rhubarb
 
     # theme
-    vimPlugins.tokyonight-nvim
     vimPlugins.catppuccin-nvim
 
     # floaterm
@@ -72,7 +71,6 @@ in rec {
     vimPlugins.lualine-nvim
     vimPlugins.noice-nvim
     vimPlugins.undotree
-    vimPlugins.nui-nvim
     vimPlugins.nvim-colorizer-lua
     vimPlugins.nvim-notify
     vimPlugins.nvim-treesitter-context
@@ -139,17 +137,4 @@ in rec {
       withPython3 = true;
       withRuby = true;
     };
-
-  mkHomeManager = {system}: let
-    extraConfig = mkExtraConfig;
-    extraPackages = mkExtraPackages {inherit system;};
-    plugins = mkNeovimPlugins {inherit system;};
-  in {
-    inherit extraConfig extraPackages plugins;
-    defaultEditor = true;
-    enable = true;
-    withNodeJs = true;
-    withPython3 = true;
-    withRuby = true;
-  };
 }
