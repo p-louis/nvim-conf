@@ -5,6 +5,49 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+require("todo-comments").setup()
+require("fugitive").setup()
+require("rhubarb").setup()
+
+require("lualine").setup {
+options = {
+    icons_enabled = false,
+    theme = 'catppuccin',
+    component_separators = { left = '', right = '' },
+    section_separators = {
+      left = '',
+      right = '',
+    }
+  },
+}
+
+require("gitsigns").setup {
+  signs = {
+    add = { text = '' },
+    change = { text = '' },
+    delete = { text = '' },
+    topdelete = { text = '' },
+    changedelete = { text = '' },
+  },
+  on_attach = function(bufnr)
+    vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
+      { buffer = bufnr, desc = 'Preview git hunk' })
+
+    -- don't override the built-in and fugitive keymaps
+    local gs = package.loaded.gitsigns
+    vim.keymap.set({ 'n', 'v' }, ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+    vim.keymap.set({ 'n', 'v' }, '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
+  end,
+}
+
 require("rust-tools").setup({
   executor = require("rust-tools.executors").termopen,
   server = {
@@ -83,7 +126,18 @@ vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36
 { desc = "Generate Random UID" })
 
 -- Colorscheme
-vim.cmd('colorscheme catppuccin-frappe')
+require('catppuccin').setup({
+  flavour = 'frappe',
+  transparent_background = false,
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    telescope = true,
+    treesitter = true,
+  },
+})
+
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 

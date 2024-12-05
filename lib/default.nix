@@ -35,10 +35,13 @@ in rec {
     vimPlugins.indent-blankline-nvim
     vimPlugins.zk-nvim
     vimPlugins.neodev-nvim
+
+    # CMP
     vimPlugins.nvim-cmp
     vimPlugins.cmp-nvim-lsp
-    vimPlugins.cmp-nvim-lua
+    vimPlugins.friendly-snippets
 
+    # Mason
     vimPlugins.mason-nvim
     vimPlugins.mason-lspconfig-nvim
     vimPlugins.mason-tool-installer-nvim
@@ -46,20 +49,28 @@ in rec {
     # telescope
     vimPlugins.plenary-nvim
     vimPlugins.telescope-nvim
+    vimPlugins.telescope-fzf-native-nvim
     vimPlugins.git-worktree-nvim
+
+    # Misc
+    vimPlugins.vim-fugitive
+    vimPlugins.vim-rhubarb
 
     # theme
     vimPlugins.tokyonight-nvim
+    vimPlugins.catppuccin-nvim
 
     # floaterm
     vimPlugins.vim-floaterm
 
     # extras
     vimPlugins.comment-nvim
-    vimPlugins.catppuccin-nvim
+    vimPlugins.lualine-nvim
+    vimPlugins.which-key-nvim
     vimPlugins.gitsigns-nvim
     vimPlugins.lualine-nvim
     vimPlugins.noice-nvim
+    vimPlugins.undotree
     vimPlugins.nui-nvim
     vimPlugins.nvim-colorizer-lua
     vimPlugins.nvim-notify
