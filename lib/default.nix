@@ -41,11 +41,6 @@ in rec {
     vimPlugins.cmp-nvim-lsp
     vimPlugins.friendly-snippets
 
-    # Mason
-    vimPlugins.mason-nvim
-    vimPlugins.mason-lspconfig-nvim
-    vimPlugins.mason-tool-installer-nvim
-
     # telescope
     vimPlugins.plenary-nvim
     vimPlugins.telescope-nvim
@@ -58,7 +53,6 @@ in rec {
     vimPlugins.nvim-autopairs
 
     # theme
-    vimPlugins.tokyonight-nvim
     vimPlugins.catppuccin-nvim
 
     # floaterm
@@ -73,7 +67,6 @@ in rec {
     vimPlugins.lualine-nvim
     vimPlugins.noice-nvim
     vimPlugins.undotree
-    vimPlugins.nui-nvim
     vimPlugins.nvim-colorizer-lua
     vimPlugins.nvim-notify
     vimPlugins.nvim-treesitter-context
@@ -107,6 +100,7 @@ in rec {
     pkgs.nil
     pkgs.nls
     pkgs.postgres-lsp
+    pkgs.rust-analyzer
     pkgs.pyright
     pkgs.terraform-ls
 
