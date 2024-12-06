@@ -103,6 +103,7 @@ in rec {
     pkgs.rust-analyzer
     pkgs.pyright
     pkgs.terraform-ls
+    pkgs.kotlin-language-server
 
     # formatters
     pkgs.alejandra
