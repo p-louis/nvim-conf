@@ -55,6 +55,7 @@ in rec {
     # Misc
     vimPlugins.vim-fugitive
     vimPlugins.vim-rhubarb
+    vimPlugins.nvim-autopairs
 
     # theme
     vimPlugins.tokyonight-nvim
