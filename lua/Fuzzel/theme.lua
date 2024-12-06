@@ -6,12 +6,15 @@ local notify = require 'notify'
 local todo_comments = require 'todo-comments'
 local lualine = require 'lualine'
 local catppuccin = require 'catppuccin'
+local autopairs = require 'nvim-autopairs'
 
 colorizer.setup()
 comment.setup()
 todo_comments.setup()
 noice.setup()
 notify.setup()
+
+autopairs.setup {}
 
 lualine.setup {
     options = {

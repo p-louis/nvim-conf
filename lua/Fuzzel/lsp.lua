@@ -1,8 +1,7 @@
 local lspconfig = require 'lspconfig'
 local omnisharp_extended = require 'omnisharp_extended'
 local rust_tools = require 'rust-tools'
-local treesitter = require 'nvim-treesitter.configs'
-local treesitter_context = require 'treesitter-context'
+
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -143,6 +142,8 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
@@ -178,6 +179,11 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+}
+
+cmp.event:on {
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
 }
 
 -- Rust Stuff
