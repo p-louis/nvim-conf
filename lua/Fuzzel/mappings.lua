@@ -51,6 +51,17 @@ end, { desc = '[G]it [P]ull' })
 
 vim.keymap.set('n', 'gt', '<cmd>diffget //2<CR>', { desc = 'Get left change' })
 vim.keymap.set('n', 'gn', '<cmd>diffget //3<CR>', { desc = 'Get right change' })
+
+
+-- Umlaute
+vim.keymap.set('i', ',,ae', '<C-k>a:', { desk = 'write ä'})
+vim.keymap.set('i', ',,ue', '<C-k>u:', { desk = 'write ü'})
+vim.keymap.set('i', ',,oe', '<C-k>o:', { desk = 'write ö'})
+vim.keymap.set('i', ',,Ae', '<C-k>A:', { desk = 'write Ä'})
+vim.keymap.set('i', ',,Ue', '<C-k>U:', { desk = 'write Ü'})
+vim.keymap.set('i', ',,Oe', '<C-k>O:', { desk = 'write Ö'})
+vim.keymap.set('i', ',,ss', '<C-k>ss', { desk = 'write ß'})
+vim.keymap.set('i', ',,SS', '<C-k>SS', { desk = 'write ẞ'})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
