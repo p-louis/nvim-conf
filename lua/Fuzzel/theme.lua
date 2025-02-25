@@ -7,12 +7,14 @@ local todo_comments = require 'todo-comments'
 local lualine = require 'lualine'
 local catppuccin = require 'catppuccin'
 local autopairs = require 'nvim-autopairs'
+local surround = require 'nvim-surround'
 
 colorizer.setup()
 comment.setup()
 todo_comments.setup()
 noice.setup()
 notify.setup()
+surround.setup()
 
 autopairs.setup {}
 
