@@ -51,6 +51,7 @@ in rec {
     vimPlugins.vim-fugitive
     vimPlugins.vim-rhubarb
     vimPlugins.nvim-autopairs
+    vimPlugins.vim-surround
 
     # theme
     vimPlugins.catppuccin-nvim
