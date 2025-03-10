@@ -7,7 +7,7 @@ in rec {
     pkgs = legacyPackages.${system};
   in
     buildVimPlugin {
-      name = "fuzzel";
+      name = "Fuzzel";
       postInstall = ''
         rm -rf $out/.envrc
         rm -rf $out/.gitignore
@@ -118,7 +118,7 @@ in rec {
 
   mkExtraConfig = ''
     lua << EOF
-      require('fuzzel')
+      require('Fuzzel')
     EOF
   '';
 
