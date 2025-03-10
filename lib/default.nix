@@ -7,7 +7,7 @@ in rec {
     pkgs = legacyPackages.${system};
   in
     buildVimPlugin {
-      name = "Fuzzel";
+      name = "fuzzel";
       postInstall = ''
         rm -rf $out/.envrc
         rm -rf $out/.gitignore
@@ -24,7 +24,7 @@ in rec {
   mkNeovimPlugins = {system}: let
     inherit (pkgs) vimPlugins;
     pkgs = legacyPackages.${system};
-    Fuzzel-nvim = mkVimPlugin {inherit system;};
+    fuzzelNvim = mkVimPlugin {inherit system;};
   in [
     # languages
     vimPlugins.nvim-lspconfig
@@ -77,7 +77,7 @@ in rec {
     vimPlugins.trouble-nvim
 
     # configuration
-    Fuzzel-nvim
+    fuzzelNvim
   ];
 
   mkExtraPackages = {system}: let
@@ -116,7 +116,7 @@ in rec {
 
   mkExtraConfig = ''
     lua << EOF
-      require('Fuzzel')
+      require('fuzzel')
     EOF
   '';
 
