@@ -19,6 +19,8 @@ in rec {
         rm -rf $out/lib
       '';
       src = ../.;
+
+      nvimRequireCheck = [ "Fuzzel.mappings" ];
     };
 
   mkNeovimPlugins = {system}: let
