@@ -68,6 +68,7 @@ local language_servers = {
   html = {},
   jsonls = {},
   jsonnet_ls = {},
+  kotlin_language_server = {},
   lua_ls = {
     settings = {
       Lua = {
