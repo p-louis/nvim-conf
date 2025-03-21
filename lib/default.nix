@@ -107,6 +107,7 @@ in rec {
     pkgs.pyright
     pkgs.terraform-ls
     pkgs.kotlin-language-server
+    pkgs.elixir-ls
 
     # formatters
     pkgs.alejandra

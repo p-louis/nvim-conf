@@ -66,6 +66,7 @@ local language_servers = {
     },
   },
   html = {},
+  elixir_ls = {},
   jsonls = {},
   jsonnet_ls = {},
   kotlin_language_server = {},
