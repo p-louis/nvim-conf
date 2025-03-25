@@ -96,6 +96,7 @@ in rec {
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
+    nodePackages.ansible-language-server
     pkgs.cuelsp
     pkgs.gopls
     pkgs.jsonnet-language-server
@@ -108,7 +109,6 @@ in rec {
     pkgs.terraform-ls
     pkgs.kotlin-language-server
     pkgs.elixir-ls
-    pkgs.ansible-language-server
 
     # formatters
     pkgs.alejandra
