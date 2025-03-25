@@ -97,6 +97,7 @@ in rec {
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
     pkgs.ansible-language-server
+    pkgs.ansible-lint
     pkgs.cuelsp
     pkgs.gopls
     pkgs.jsonnet-language-server
