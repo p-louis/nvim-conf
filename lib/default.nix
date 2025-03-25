@@ -108,6 +108,7 @@ in rec {
     pkgs.terraform-ls
     pkgs.kotlin-language-server
     pkgs.elixir-ls
+    pkgs.ansible-language-server
 
     # formatters
     pkgs.alejandra

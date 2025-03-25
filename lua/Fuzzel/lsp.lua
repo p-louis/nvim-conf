@@ -70,6 +70,7 @@ local language_servers = {
   jsonls = {},
   jsonnet_ls = {},
   kotlin_language_server = {},
+  ansible_language_server = {},
   lua_ls = {
     settings = {
       Lua = {
