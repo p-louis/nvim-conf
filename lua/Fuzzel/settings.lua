@@ -64,5 +64,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
         vim.o.sts = 2
     end
 })
+
+vim.diagnostic.config({ virtual_text = true })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
