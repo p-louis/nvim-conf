@@ -69,6 +69,7 @@ local language_servers = {
   elixir_ls = {},
   jsonls = {},
   jsonnet_ls = {},
+  jdtls = {},
   kotlin_language_server = {},
   ansiblels = {},
   lua_ls = {
