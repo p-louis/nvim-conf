@@ -19,7 +19,7 @@ notify.setup()
 surround.setup()
 render_markdown.setup({
   heading = {
-    icons = {'','','','','',''},
+    icons = {' ',' ',' ',' ',' ',' '},
   },
 })
 
