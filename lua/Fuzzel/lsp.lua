@@ -1,6 +1,7 @@
 local lspconfig = require 'lspconfig'
 local omnisharp_extended = require 'omnisharp_extended'
 local rust_tools = require 'rust-tools'
+local render_markdown = require 'render-markdown'
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -53,6 +54,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+render_markdown.setup({})
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
