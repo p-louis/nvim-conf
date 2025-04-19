@@ -64,6 +64,7 @@ gitsigns.setup {
   end,
 }
 
+vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -85,6 +86,9 @@ catppuccin.setup({
     gitsigns = true,
     telescope = true,
     treesitter = true,
+  },
+  color_overrides = {
+    frappe = {},
   },
 })
 vim.cmd('colorscheme catppuccin')
