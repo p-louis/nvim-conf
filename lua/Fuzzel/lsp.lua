@@ -75,7 +75,7 @@ local language_servers = {
     },
   },
   html = {},
-  elixir_ls = {},
+  elixirls = {},
   jsonls = {},
   jsonnet_ls = {},
   jdtls = {},
