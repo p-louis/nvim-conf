@@ -70,6 +70,7 @@ in rec {
     vimPlugins.omnisharp-extended-lsp-nvim
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
+    vimPlugins.render-markdown-nvim
 
     # configuration
     fuzzelNvim

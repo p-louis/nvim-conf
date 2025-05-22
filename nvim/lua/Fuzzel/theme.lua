@@ -8,6 +8,8 @@ local lualine = require 'lualine'
 local catppuccin = require 'catppuccin'
 local autopairs = require 'nvim-autopairs'
 local surround = require 'nvim-surround'
+local render_markdown = require 'render-markdown'
+
 
 colorizer.setup()
 comment.setup()
@@ -15,6 +17,11 @@ todo_comments.setup()
 noice.setup()
 notify.setup()
 surround.setup()
+render_markdown.setup({
+  heading = {
+    icons = {' ',' ',' ',' ',' ',' '},
+  },
+})
 
 autopairs.setup {}
 
@@ -79,8 +86,13 @@ catppuccin.setup({
     telescope = true,
     treesitter = true,
   },
+  color_overrides = {
+    frappe = {},
+  },
 })
 vim.cmd('colorscheme catppuccin')
+
+vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
