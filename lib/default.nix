@@ -9,16 +9,9 @@ in rec {
     buildVimPlugin {
       name = "Fuzzel";
       postInstall = ''
-        rm -rf $out/.envrc
-        rm -rf $out/.gitignore
-        rm -rf $out/LICENSE
-        rm -rf $out/README.md
-        rm -rf $out/flake.lock
-        rm -rf $out/flake.nix
-        rm -rf $out/justfile
-        rm -rf $out/lib
+        rm -rf $out/init.lua
       '';
-      src = ../.;
+      src = ../nvim;
 
       nvimRequireCheck = [ "Fuzzel.mappings" ];
     };
@@ -134,8 +127,8 @@ in rec {
   in
     neovim.override {
       configure = {
-        customRC = mkExtraConfig;
         packages.main = {inherit start;};
+        customRC = mkExtraConfig;
       };
       extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
       withNodeJs = true;

@@ -5,7 +5,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
 require('Fuzzel.lsp')
 require('Fuzzel.mappings')
 require('Fuzzel.settings')
