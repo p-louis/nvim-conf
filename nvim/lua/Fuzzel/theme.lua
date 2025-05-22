@@ -9,8 +9,10 @@ local catppuccin = require 'catppuccin'
 local autopairs = require 'nvim-autopairs'
 local surround = require 'nvim-surround'
 local render_markdown = require 'render-markdown'
+local marks = require 'marks'
 
 
+marks.setup()
 colorizer.setup()
 comment.setup()
 todo_comments.setup()
