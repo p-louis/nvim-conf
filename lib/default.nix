@@ -48,6 +48,7 @@ in rec {
     vimPlugins.nvim-autopairs
     vimPlugins.nvim-surround
     vimPlugins.marks-nvim
+    vimPlugins.oil-nvim
 
     # theme
     vimPlugins.catppuccin-nvim

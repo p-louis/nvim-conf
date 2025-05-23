@@ -18,7 +18,9 @@ comment.setup()
 todo_comments.setup()
 noice.setup()
 notify.setup()
-surround.setup()
+surround.setup({
+
+})
 render_markdown.setup({
   heading = {
     icons = {' ',' ',' ',' ',' ',' '},

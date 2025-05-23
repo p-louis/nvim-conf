@@ -8,10 +8,12 @@ vim.g.maplocalleader = ' '
 require('Fuzzel.lsp')
 require('Fuzzel.mappings')
 require('Fuzzel.settings')
-require('Fuzzel.telescope')
-require('Fuzzel.treesitter')
-require('Fuzzel.undotree')
 require('Fuzzel.theme')
+
+require('Fuzzel.telescope')
+require('Fuzzel.undotree')
+require('Fuzzel.treesitter')
+require('Fuzzel.oil')
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
