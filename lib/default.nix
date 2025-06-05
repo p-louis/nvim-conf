@@ -52,6 +52,7 @@ in rec {
 
     # theme
     vimPlugins.catppuccin-nvim
+    vimPlugins.everforest
 
     # floaterm
     vimPlugins.vim-floaterm

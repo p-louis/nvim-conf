@@ -32,7 +32,7 @@ autopairs.setup {}
 lualine.setup {
     options = {
         icons_enabled = false,
-        theme = 'catppuccin',
+        theme = 'everforest',
         component_separators = { left = '', right = '' },
         section_separators = {
             left = '',
@@ -94,7 +94,8 @@ catppuccin.setup({
     frappe = {},
   },
 })
-vim.cmd('colorscheme catppuccin')
+
+vim.cmd('colorscheme everforest')
 
 vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
