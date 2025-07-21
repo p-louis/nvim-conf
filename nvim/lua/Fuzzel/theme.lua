@@ -80,22 +80,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Colorscheme
-catppuccin.setup({
-  flavour = 'frappe',
-  transparent_background = false,
-  integrations = {
-    cmp = true,
-    gitsigns = true,
-    telescope = true,
-    treesitter = true,
-  },
-  color_overrides = {
-    frappe = {},
-  },
-})
-
-vim.cmd('colorscheme everforest')
+vim.cmd.colorscheme('unokai')
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none'})
+vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none'})
+vim.api.nvim_set_hl(0, 'NormalEndOfBuffer', { bg = 'none'})
 
 vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
