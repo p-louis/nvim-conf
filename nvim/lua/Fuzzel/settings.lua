@@ -3,12 +3,16 @@
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
+vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.o.hlsearch = false
 vim.o.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+vim.o.cursorline = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -42,18 +46,28 @@ vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
+vim.wo.colorcolumn = '120'
 
 -- Decrease update time
 vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noinsert,noselect'
+vim.o.pumheight = 10
+vim.o.pumblend = 10
+vim.o.winblend = 0
+vim.o.conceallevel = 0
+vim.o.concealcursor = ""
+vim.o.lazyredraw = true
+vim.o.synmaxcol = 300
+
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
 
 -- vim.o.colorcolumn = 80
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
