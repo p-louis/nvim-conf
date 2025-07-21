@@ -59,7 +59,6 @@ vim.o.pumblend = 10
 vim.o.winblend = 0
 vim.o.conceallevel = 0
 vim.o.concealcursor = ""
-vim.o.lazyredraw = true
 vim.o.synmaxcol = 300
 
 
