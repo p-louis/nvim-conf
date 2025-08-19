@@ -85,6 +85,7 @@ in rec {
       inherit system;
       config.allowUnfree = true;
     };
+    kotlin-lsp = import ../derivations/kotlin-lsp.nix { inherit pkgs; };
   in [
     # language servers
     nodePackages.bash-language-server
@@ -105,15 +106,14 @@ in rec {
     pkgs.rust-analyzer
     pkgs.pyright
     pkgs.terraform-ls
-    pkgs.kotlin-language-server
     pkgs.jdt-language-server
     pkgs.elixir-ls
+    kotlin-lsp
 
     # formatters
     pkgs.alejandra
     pkgs.gofumpt
     pkgs.golines
-    pkgs.terraform
     python3Packages.black
   ];
 

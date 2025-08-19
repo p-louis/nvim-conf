@@ -62,6 +62,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
+vim.lsp.enable('kotlin_lsp')
+
 local language_servers = {
   bashls = {},
   cssls = {},
@@ -81,7 +83,7 @@ local language_servers = {
   jsonls = {},
   jsonnet_ls = {},
   jdtls = {},
-  kotlin_language_server = {},
+  kotlin_lsp = {},
   ansiblels = {},
   lua_ls = {
     settings = {

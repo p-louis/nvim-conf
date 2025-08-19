@@ -82,11 +82,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.cmd.colorscheme('unokai')
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none'})
-vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none'})
-vim.api.nvim_set_hl(0, 'NormalEndOfBuffer', { bg = 'none'})
-vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = '#444444'})
+vim.cmd.colorscheme('catppuccin')
+-- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none'})
+-- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none'})
+-- vim.api.nvim_set_hl(0, 'NormalEndOfBuffer', { bg = 'none'})
+-- vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = '#444444'})
 
 vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
