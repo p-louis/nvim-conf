@@ -48,10 +48,10 @@ pkgs.stdenv.mkDerivation rec {
     longDescription = ''
       About Kotlin code completion, linting and more for any editor/IDE
       using the Language Server Protocol Topics'';
-    maintainers = with pkgs.lib.maintainers; [ fuzzel ];
+    maintainers = with pkgs.lib.maintainers; [ p-louis ];
     homepage = "https://github.com/Kotlin/kotlin-lsp";
     changelog = "https://github.com/Kotlin/kotlin-lsp/blob/${version}/CHANGELOG.md";
-    license = pkgs.lib.licenses.mit;
+    license = pkgs.lib.licenses.als20;
     platforms = pkgs.lib.platforms.unix;
     sourceProvenance = [ pkgs.lib.sourceTypes.binaryBytecode ];
     mainProgram = "kotlin-lsp";
