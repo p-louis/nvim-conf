@@ -30,6 +30,9 @@ vim.keymap.set('n', '<leader>lcr', vim.lsp.codelens.run, { desc = '[C]odelens [R
 vim.keymap.set('n', '<leader>lca', vim.lsp.buf.code_action, { desc = '[C]odelens [R]un' })
 vim.keymap.set('n', '<leader>lrn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
+-- Mixed Stuff
+vim.keymap.set('n', '<leader>tt', '<cmd>terminal<CR>', { desc = 'Open Terminal' })
+
 -- Great remap!
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep copied text' })
 
