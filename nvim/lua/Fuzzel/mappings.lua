@@ -32,7 +32,7 @@ vim.keymap.set('n', '<leader>lrn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
 -- Terminal
 vim.keymap.set('n', '<leader>tt', '<cmd>terminal<CR>', { desc = 'Open Terminal' })
-vim.keymap.set('t', '<leader><ESC>', '<C-\\><C-n>')
+vim.keymap.set('t', '<C-n><ESC>', '<C-\\><C-n>')
 
 -- Great remap!
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep copied text' })
