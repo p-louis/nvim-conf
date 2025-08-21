@@ -149,6 +149,7 @@ local language_servers = {
       },
     },
   },
+  roc_ls = {},
   terraformls = {},
   ts_ls = {},
   yamlls = {

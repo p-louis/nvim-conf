@@ -108,6 +108,7 @@ in rec {
     pkgs.terraform-ls
     pkgs.jdt-language-server
     pkgs.elixir-ls
+    pkgs.roc
     kotlin-lsp
 
     # formatters
