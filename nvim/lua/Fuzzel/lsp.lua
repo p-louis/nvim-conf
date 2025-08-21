@@ -13,16 +13,23 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  vim.api.nvim_create_autocmd("BufWritePre",  {
+    buffer = 0,
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+  })
+
   vim.api.nvim_create_autocmd("CursorHold",  {
     buffer = 0,
     callback = function()
-      vim.lsp.buf.document_highlight()
+      result = pcall(vim.lsp.buf.document_highlight())
     end,
   })
   vim.api.nvim_create_autocmd("CursorHoldI",  {
     buffer = 0,
     callback = function()
-      vim.lsp.buf.document_highlight()
+      result = pcall(vim.lsp.buf.document_highlight())
     end,
   })
   vim.api.nvim_create_autocmd("CursorMoved", {
