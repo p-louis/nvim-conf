@@ -13,23 +13,23 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  vim.api.nvim_create_autocmd("BufWritePre",  {
+  vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = 0,
     callback = function()
       vim.lsp.buf.format()
     end,
   })
 
-  vim.api.nvim_create_autocmd("CursorHold",  {
+  vim.api.nvim_create_autocmd("CursorHold", {
     buffer = 0,
     callback = function()
-      result = pcall(vim.lsp.buf.document_highlight())
+      vim.lsp.buf.document_highlight()
     end,
   })
-  vim.api.nvim_create_autocmd("CursorHoldI",  {
+  vim.api.nvim_create_autocmd("CursorHoldI", {
     buffer = 0,
     callback = function()
-      result = pcall(vim.lsp.buf.document_highlight())
+      vim.lsp.buf.document_highlight()
     end,
   })
   vim.api.nvim_create_autocmd("CursorMoved", {
@@ -61,7 +61,7 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  nmap("<C-space>", rust_tools.hover_actions.hover_actions, 'Hover Actions' )
+  nmap("<C-space>", rust_tools.hover_actions.hover_actions, 'Hover Actions')
   -- Code action groups
   nmap("<Leader>a", rust_tools.code_action_group.code_action_group, 'Code Action Group')
 
@@ -75,21 +75,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true})
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
   end,
 })
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
 vim.lsp.enable('kotlin_lsp')
-
 local language_servers = {
   bashls = {},
   cssls = {},
@@ -168,16 +159,16 @@ local language_servers = {
   },
 }
 for server, server_config in pairs(language_servers) do
-        local config = { on_attach = on_attach }
+  local config = { on_attach = on_attach }
 
-        if server_config then
-            for k, v in pairs(server_config) do
-                config[k] = v
-            end
-        end
-
-        lspconfig[server].setup(config)
+  if server_config then
+    for k, v in pairs(server_config) do
+      config[k] = v
     end
+  end
+
+  lspconfig[server].setup(config)
+end
 
 -- Setup neovim lua configuration
 require('neodev').setup()
