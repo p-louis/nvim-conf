@@ -1,10 +1,11 @@
 local lspconfig = require 'lspconfig'
 local omnisharp_extended = require 'omnisharp_extended'
 local rust_tools = require 'rust-tools'
+local methods = vim.lsp.protocol.Methods
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -13,31 +14,13 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = 0,
-    callback = function()
-      vim.lsp.buf.format()
-    end,
-  })
+  vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, callback = vim.lsp.buf.format() })
 
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = 0,
-    callback = function()
-      vim.lsp.buf.document_highlight()
-    end,
-  })
-  vim.api.nvim_create_autocmd("CursorHoldI", {
-    buffer = 0,
-    callback = function()
-      vim.lsp.buf.document_highlight()
-    end,
-  })
-  vim.api.nvim_create_autocmd("CursorMoved", {
-    buffer = 0,
-    callback = function()
-      vim.lsp.buf.clear_references()
-    end,
-  })
+  if client:supports_method(methods.textDocument_documentHighlight) then
+    vim.api.nvim_create_autocmd("CursorHold", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
+    vim.api.nvim_create_autocmd("CursorHoldI", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
+    vim.api.nvim_create_autocmd("CursorMoved", { buffer = bufnr, callback = vim.lsp.buf.clear_references() })
+  end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
