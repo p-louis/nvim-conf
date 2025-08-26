@@ -25,22 +25,22 @@ surround.setup({
 })
 render_markdown.setup({
   heading = {
-    icons = {' ',' ',' ',' ',' ',' '},
+    icons = { ' ', ' ', ' ', ' ', ' ', ' ' },
   },
 })
 
 autopairs.setup {}
 
 lualine.setup {
-    options = {
-        icons_enabled = false,
-        theme = 'everforest',
-        component_separators = { left = '', right = '' },
-        section_separators = {
-            left = '',
-            right = '',
-        }
-    },
+  options = {
+    icons_enabled = false,
+    theme = 'everforest',
+    component_separators = { left = '', right = '' },
+    section_separators = {
+      left = '',
+      right = '',
+    }
+  },
 }
 
 gitsigns.setup {
@@ -82,7 +82,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.cmd.colorscheme('catppuccin')
+vim.o.background = 'light'
+vim.cmd.colorscheme('zenbones')
 -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none'})
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none'})
 -- vim.api.nvim_set_hl(0, 'NormalEndOfBuffer', { bg = 'none'})
