@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.o.background = 'light'
-vim.cmd.colorscheme('zenbones')
+vim.cmd.colorscheme('rosebones')
 -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none'})
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none'})
 -- vim.api.nvim_set_hl(0, 'NormalEndOfBuffer', { bg = 'none'})
