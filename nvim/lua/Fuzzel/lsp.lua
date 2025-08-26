@@ -14,13 +14,13 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, callback = vim.lsp.buf.format() })
+  -- vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, callback = vim.lsp.buf.format() })
 
-  if client:supports_method(methods.textDocument_documentHighlight) then
-    vim.api.nvim_create_autocmd("CursorHold", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
-    vim.api.nvim_create_autocmd("CursorHoldI", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
-    vim.api.nvim_create_autocmd("CursorMoved", { buffer = bufnr, callback = vim.lsp.buf.clear_references() })
-  end
+  -- if client:supports_method(methods.textDocument_documentHighlight) then
+  --   vim.api.nvim_create_autocmd("CursorHold", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
+  --   vim.api.nvim_create_autocmd("CursorHoldI", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
+  --   vim.api.nvim_create_autocmd("CursorMoved", { buffer = bufnr, callback = vim.lsp.buf.clear_references() })
+  -- end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
