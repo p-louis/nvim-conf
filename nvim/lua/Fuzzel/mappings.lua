@@ -31,7 +31,7 @@ vim.keymap.set('n', '<leader>lca', vim.lsp.buf.code_action, { desc = '[C]odelens
 vim.keymap.set('n', '<leader>lrn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
 -- Terminal
-vim.keymap.set('n', '<leader>tt', '<cmd>terminal<CR>', { desc = 'Open Terminal' })
+vim.keymap.set('n', '<leader>to', '<cmd>terminal<CR>', { desc = 'Open Terminal' })
 vim.keymap.set('t', '<C-n><ESC>', '<C-\\><C-n>')
 
 -- Great remap!
@@ -88,13 +88,26 @@ vim.keymap.set('n', '<leader>tc', function()
   local row,_ = unpack(vim.api.nvim_win_get_cursor(0))
 
   local note = string.sub(string.match(current_line, 'TODO: .*'),7)
-  local annotation = 'nvimtodo:' .. current_file .. '#' .. row
+  local annotation = 'nvimline:' .. row .. ':' .. current_file
   print('Creating Task ' .. note  .. " in project " .. project)
   print('Annotating Task with ' .. annotation)
   print('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
 
   os.execute('task add project:' .. project .. ' ' .. note .. ' +todo +work +automation')
   os.execute('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
+
+end,{ desc = "[T]ask [C]reate from TODO"})
+
+vim.keymap.set('n', '<leader>td', function()
+  local current_line = vim.api.nvim_get_current_line()
+  local current_buf = vim.api.nvim_get_current_buf()
+  local current_file = vim.api.nvim_buf_get_name(current_buf)
+  local project = string.gsub(string.match(string.gsub(current_file,'/home/fuzzel/',''),'[^/]*/[^/]*'),'/','.')
+
+  local note = string.sub(string.match(current_line, 'TODO: .*'),7)
+  print('Creating Task ' .. note  .. " in project " .. project)
+
+  os.execute('task +todo +work +automation /' .. note .. '/ done')
 
 end,{ desc = "[T]ask [C]reate from TODO"})
 -- The line beneath this is called `modeline`. See `:help modeline`
