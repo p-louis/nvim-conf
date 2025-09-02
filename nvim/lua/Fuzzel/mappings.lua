@@ -78,5 +78,24 @@ vim.keymap.set('n', '<leader>nl', ':ZkInsertLink<CR>', { desc = '[N]ote insert [
 vim.keymap.set('v', '<leader>nfc', ':ZkMatch<CR>', { desc = '[F]ind [N]otes by Content' })
 vim.keymap.set('v', '<leader>nc', ':ZkNewFromContentSelection<CR>', { desc = '[N]ote from [C]ontent' })
 vim.keymap.set('v', '<leader>nt', ':ZkNewFromTitleSelection<CR>', { desc = '[N]ote from [T]itle' })
+
+-- TODO-Related Stuff
+vim.keymap.set('n', '<leader>tc', function()
+  local current_line = vim.api.nvim_get_current_line()
+  local current_buf = vim.api.nvim_get_current_buf()
+  local current_file = vim.api.nvim_buf_get_name(current_buf)
+  local project = string.gsub(string.match(string.gsub(current_file,'/home/fuzzel/',''),'[^/]*/[^/]*'),'/','.')
+  local row,_ = unpack(vim.api.nvim_win_get_cursor(0))
+
+  local note = string.sub(string.match(current_line, 'TODO: .*'),7)
+  local annotation = 'nvimtodo:' .. current_file .. '#' .. row
+  print('Creating Task ' .. note  .. " in project " .. project)
+  print('Annotating Task with ' .. annotation)
+  print('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
+
+  os.execute('task add project:' .. project .. ' ' .. note .. ' +todo +work +automation')
+  os.execute('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
+
+end,{ desc = "[T]ask [C]reate from TODO"})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
