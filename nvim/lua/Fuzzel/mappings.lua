@@ -93,8 +93,8 @@ vim.keymap.set('n', '<leader>tc', function()
   print('Annotating Task with ' .. annotation)
   print('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
 
-  os.execute('task add project:' .. project .. ' ' .. note .. ' +todo +work +automation')
-  os.execute('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
+  vim.fn.system('task add project:' .. project .. ' ' .. note .. ' +todo +work +automation')
+  vim.fn.system('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
 
 end,{ desc = "[T]ask [C]reate from TODO"})
 
@@ -107,8 +107,8 @@ vim.keymap.set('n', '<leader>td', function()
   local note = string.sub(string.match(current_line, 'TODO: .*'),7)
   print('Creating Task ' .. note  .. " in project " .. project)
 
-  os.execute('task +todo +work +automation /' .. note .. '/ done')
+  vim.fn.system('task +todo +work +automation /' .. note .. '/ done')
 
-end,{ desc = "[T]ask [C]reate from TODO"})
+end,{ desc = "Set [T]ask to [D]one"})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
