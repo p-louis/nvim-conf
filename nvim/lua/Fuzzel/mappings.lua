@@ -91,10 +91,10 @@ vim.keymap.set('n', '<leader>tc', function()
   local annotation = 'nvimline:' .. row .. ':' .. current_file
   print('Creating Task ' .. note  .. " in project " .. project)
   print('Annotating Task with ' .. annotation)
-  print('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
+  print('task +todo +work +automation "/' .. note .. '/" annotate ' .. annotation)
 
   vim.fn.system('task add project:' .. project .. ' ' .. note .. ' +todo +work +automation')
-  vim.fn.system('task +todo +work +automation /' .. note .. '/ annotate ' .. annotation)
+  vim.fn.system('task +todo +work +automation "/' .. note .. '/" annotate ' .. annotation)
 
 end,{ desc = "[T]ask [C]reate from TODO"})
 
@@ -105,9 +105,9 @@ vim.keymap.set('n', '<leader>td', function()
   local project = string.gsub(string.match(string.gsub(current_file,'/home/fuzzel/',''),'[^/]*/[^/]*'),'/','.')
 
   local note = string.sub(string.match(current_line, 'TODO: .*'),7)
-  print('Creating Task ' .. note  .. " in project " .. project)
-
-  vim.fn.system('task +todo +work +automation /' .. note .. '/ done')
+  print('Task "' .. note  .. '" in project ' .. project .. ' set to done')
+  print('task +todo +work +automation "/' .. note .. '/" done')
+  vim.fn.system('task +todo +work +automation "/' .. note .. '/" done')
 
 end,{ desc = "Set [T]ask to [D]one"})
 -- The line beneath this is called `modeline`. See `:help modeline`
