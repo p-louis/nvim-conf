@@ -1,6 +1,5 @@
 local lspconfig = require 'lspconfig'
 local omnisharp_extended = require 'omnisharp_extended'
-local rust_tools = require 'rust-tools'
 local methods = vim.lsp.protocol.Methods
 
 -- [[ Configure LSP ]]
@@ -203,26 +202,6 @@ cmp.event:on {
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 }
-
--- Rust Stuff
-rust_tools.setup({
-  executor = require("rust-tools.executors").termopen,
-  server = {
-    on_attach = on_attach,
-    ['rust-analyzer'] = {
-      cargo = {
-        autoReload = true
-      }
-    }
-  },
-  dap = {
-    adapter = {
-      type = "executable",
-      command = "lldb-vscode",
-      name = "rt_lldb",
-    },
-  },
-})
 
 -- ZK stuff
 require("zk").setup({
