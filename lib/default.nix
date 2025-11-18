@@ -100,7 +100,7 @@ rec {
     [
       # language servers
       nodePackages.bash-language-server
-      nodePackages.dockerfile-language-server
+      pkgs.dockerfile-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
