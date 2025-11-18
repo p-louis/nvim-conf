@@ -31,7 +31,6 @@ rec {
       # languages
       vimPlugins.nvim-lspconfig
       vimPlugins.nvim-treesitter.withAllGrammars
-      #vimPlugins.rust-tools-nvim
       vimPlugins.rust-vim
       vimPlugins.vim-just
       vimPlugins.indent-blankline-nvim

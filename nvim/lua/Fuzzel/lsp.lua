@@ -13,14 +13,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  -- vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, callback = vim.lsp.buf.format() })
-
-  -- if client:supports_method(methods.textDocument_documentHighlight) then
-  --   vim.api.nvim_create_autocmd("CursorHold", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
-  --   vim.api.nvim_create_autocmd("CursorHoldI", { buffer = bufnr, callback = vim.lsp.buf.document_highlight() })
-  --   vim.api.nvim_create_autocmd("CursorMoved", { buffer = bufnr, callback = vim.lsp.buf.clear_references() })
-  -- end
-
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -42,10 +34,6 @@ local on_attach = function(client, bufnr)
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
-
-  nmap("<C-space>", rust_tools.hover_actions.hover_actions, 'Hover Actions')
-  -- Code action groups
-  nmap("<Leader>a", rust_tools.code_action_group.code_action_group, 'Code Action Group')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
