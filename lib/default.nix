@@ -100,7 +100,7 @@ rec {
     [
       # language servers
       nodePackages.bash-language-server
-      nodePackages.dockerfile-language-server-nodejs
+      nodePackages.dockerfile-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
@@ -112,7 +112,7 @@ rec {
       pkgs.lua-language-server
       pkgs.nil
       pkgs.nls
-      pkgs.postgres-lsp
+      pkgs.postgres-language-server
       pkgs.rust-analyzer
       pkgs.pyright
       pkgs.terraform-ls
