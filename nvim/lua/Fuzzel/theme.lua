@@ -34,7 +34,7 @@ autopairs.setup {}
 lualine.setup {
   options = {
     icons_enabled = false,
-    theme = 'everforest',
+    theme = 'catppuccin',
     component_separators = { left = '', right = '' },
     section_separators = {
       left = '',
@@ -82,8 +82,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.cmd.colorscheme('zenbones')
-vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
+catppuccin.setup({
+  flavour = 'frappe',
+  transparent_background = false,
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    telescope = true,
+    treesitter = true,
+  },
+  color_overrides = {
+    frappe = {},
+  },
+})
+
+vim.cmd.colorscheme('catppuccin')
+--vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
