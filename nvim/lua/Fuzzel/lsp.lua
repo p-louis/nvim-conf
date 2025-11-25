@@ -67,6 +67,10 @@ local language_servers = {
   elixirls = {
     cmd = { "elixir-ls" },
   },
+  tinymist = {
+    cmd = { "tinymist" },
+    filetypes = { "typst" },
+  },
   jsonls = {},
   jsonnet_ls = {},
   jdtls = {},

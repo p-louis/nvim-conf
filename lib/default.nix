@@ -119,6 +119,7 @@ rec {
       pkgs.jdt-language-server
       pkgs.elixir-ls
       pkgs.roc
+      pkgs.tinymist
       kotlin-lsp
 
       # formatters
