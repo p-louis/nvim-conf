@@ -39,6 +39,7 @@ pkgs.stdenv.mkDerivation rec {
       pkgs.lib.strings.makeBinPath [
         pkgs.openjdk
         pkgs.maven
+        pkgs.jre
       ]
     }
   '';
