@@ -4,11 +4,11 @@
 
 pkgs.stdenv.mkDerivation rec {
   pname = "kotlin-lsp";
-  version = "0.253.10629";
+  version = "261.13587.0";
   src = pkgs.fetchzip {
     stripRoot = false;
-    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-${version}.zip";
-    hash = "sha256-LCLGo3Q8/4TYI7z50UdXAbtPNgzFYtmUY/kzo2JCln0=";
+    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-linux-x64.zip";
+    hash = "sha256-EweSqy30NJuxvlJup78O+e+JOkzvUdb6DshqAy1j9jE=";
   };
 
   dontBuild = true;
