@@ -17,9 +17,12 @@ pkgs.stdenv.mkDerivation rec {
     mkdir -p $out/lib
     mkdir -p $out/native
     mkdir -p $out/bin
+    mkdir -p $out/jre
     cp -r lib/* $out/lib
+    cp -r jre/* $out/jre
     ls -la
     cp -r native/* $out/native
+    chmod +x $out/jre/java
     chmod +x kotlin-lsp.sh
     cp "kotlin-lsp.sh" "$out/kotlin-lsp"
     ln -s $out/kotlin-lsp $out/bin/kotlin-lsp
