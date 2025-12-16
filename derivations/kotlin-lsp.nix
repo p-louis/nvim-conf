@@ -22,6 +22,7 @@ pkgs.stdenv.mkDerivation rec {
     cp -r jre/* $out/jre
     ls -la
     cp -r native/* $out/native
+    chmod +x $out/jre/bin/java
     chmod +x kotlin-lsp.sh
     cp "kotlin-lsp.sh" "$out/kotlin-lsp"
     ln -s $out/kotlin-lsp $out/bin/kotlin-lsp
