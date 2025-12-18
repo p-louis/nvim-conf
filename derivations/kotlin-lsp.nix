@@ -1,63 +1,57 @@
-{ pkgs,
-  ...
+{
+  lib,
+  stdenv,
+  fetchzip,
+  makeWrapper,
 }:
 
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "kotlin-lsp";
   version = "261.13587.0";
-  src = pkgs.fetchzip {
+  platformSuffix = lib.attrByPath [ stdenv.hostPlatform.system ] (throw "unsupported platform: ${stdenv.hostPlatform.system}") {
+    "x86_64-linux"  = "linux-x64";
+    "aarch64-linux" = "linux-aarch64";
+    "x86_64-darwin"  = "macos-x64";
+    "aarch64-darwin" = "macos-aarch64";
+  };
+
+  hashes = {
+    "x86_64-linux"  = "sha256-dc0ed2e70cb0d61fdabb26aefce8299b7a75c0dcfffb9413715e92caec6e83ec";
+    "aarch64-linux" = "sha256-d1dceb000fe06c5e2c30b95e7f4ab01d05101bd03ed448167feeb544a9f1d651";
+    "x86_64-darwin"  =  "sha256-a3972f27229eba2c226060e54baea1c958c82c326dfc971bf53f72a74d0564a3";
+    "aarch64-darwin" =  "sha256-d4ea28b22b29cf906fe16d23698a8468f11646a6a66dcb15584f306aaefbee6c";
+  };
+
+  src = fetchzip {
     stripRoot = false;
-    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-linux-x64.zip";
-    hash = "sha256-EweSqy30NJuxvlJup78O+e+JOkzvUdb6DshqAy1j9jE=";
+    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-${platformSuffix.${stdenv.hostPlatform.system}}.zip";
+    hash = hashes.${stdenv.hostPlatform.system};
   };
 
   dontBuild = true;
 
   installPhase = ''
-    mkdir -p $out/lib
-    mkdir -p $out/native
-    mkdir -p $out/bin
-    mkdir -p $out/jre
-    cp -r lib/* $out/lib
-    cp -r jre/* $out/jre
-    ls -la
-    cp -r native/* $out/native
-    chmod +x $out/jre/bin/java
-    chmod +x kotlin-lsp.sh
-    cp "kotlin-lsp.sh" "$out/kotlin-lsp"
-    ln -s $out/kotlin-lsp $out/bin/kotlin-lsp
+    runHook preInstall
+
+    mkdir -p $out/bin $out/lib/kotlin-lsp
+    cp * $out/lib/kotlin-lsp
+    ln -s $out/lib/kotlin-lsp/kotlin-lsp.sh $out/bin/kotlin-lsp
+
+    runHook postInstall
   '';
 
   nativeBuildInputs = [
-    pkgs.gradle
-    pkgs.makeWrapper
+    makeWrapper
   ];
-  buildInputs = [
-    pkgs.openjdk
-    pkgs.gradle
-  ];
-
-  postFixup = ''
-    wrapProgram "$out/bin/kotlin-lsp" --set JAVA_HOME ${pkgs.openjdk} --prefix PATH : ${
-      pkgs.lib.strings.makeBinPath [
-        pkgs.openjdk
-        pkgs.maven
-        pkgs.jre
-      ]
-    }
-  '';
 
   meta = {
-    description = "Kotlin LSP";
-    longDescription = ''
-      Official LSP implementation for Kotlin code completion, linting and more
-      for any editor/IDE'';
-    maintainers = with pkgs.lib.maintainers; [ p-louis ];
+    description = "LSP implementation for Kotlin code completion, linting";
+    maintainers = with lib.maintainers; [ p-louis ];
     homepage = "https://github.com/Kotlin/kotlin-lsp";
-    changelog = "https://github.com/Kotlin/kotlin-lsp/blob/main/RELEASES.md";
-    license = pkgs.lib.licenses.asl20;
-    platforms = pkgs.lib.platforms.unix;
-    sourceProvenance = [ pkgs.lib.sourceTypes.binaryBytecode ];
+    changelog = "https://github.com/Kotlin/kotlin-lsp/blob/kotlin-lsp/v${version}/RELEASES.md";
+    license = lib.licenses.asl20;
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    sourceProvenance = [ lib.sourceTypes.binaryBytecode ];
     mainProgram = "kotlin-lsp";
   };
 }
