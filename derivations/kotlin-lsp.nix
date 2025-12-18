@@ -7,24 +7,26 @@
 (stdenv.mkDerivation rec {
   pname = "kotlin-lsp";
   version = "261.13587.0";
-  platformSuffix = lib.attrByPath [ stdenv.hostPlatform.system ] (throw "unsupported platform: ${stdenv.hostPlatform.system}") {
+  system = stdenv.hostPlatform.system;
+
+  platformSuffix = {
     "x86_64-linux"  = "linux-x64";
     "aarch64-linux" = "linux-aarch64";
     "x86_64-darwin"  = "macos-x64";
     "aarch64-darwin" = "macos-aarch64";
-  };
+  }.${system};
 
-  hash = lib.attrByPath [ stdenv.hostPlatform.system ] (throw "unsupported platform: ${stdenv.hostPlatform.system}") {
-    "x86_64-linux"  = "sha256-dc0ed2e70cb0d61fdabb26aefce8299b7a75c0dcfffb9413715e92caec6e83ec";
-    "aarch64-linux" = "sha256-d1dceb000fe06c5e2c30b95e7f4ab01d05101bd03ed448167feeb544a9f1d651";
-    "x86_64-darwin"  =  "sha256-a3972f27229eba2c226060e54baea1c958c82c326dfc971bf53f72a74d0564a3";
-    "aarch64-darwin" =  "sha256-d4ea28b22b29cf906fe16d23698a8468f11646a6a66dcb15584f306aaefbee6c";
-  };
+  hash = {
+    "x86_64-linux"  = "sha256-EweSqy30NJuxvlJup78O+e+JOkzvUdb6DshqAy1j9jE=";
+    "aarch64-linux" = "sha256-MhHEYHBctaDH9JVkN/guDCG1if9Bip1aP3n+JkvHCvA=";
+    "x86_64-darwin"  =  "sha256-zMuUcahT1IiCT1NTrMCIzUNM0U6U3zaBkJtbGrzF7I8=";
+    "aarch64-darwin" =  "sha256-zwlzVt3KYN0OXKr6sI9XSijXSbTImomSTGRGa+3zCK8=";
+  }.${system};
 
   src = fetchzip {
     stripRoot = false;
     url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-${platformSuffix}.zip";
-    hash = hash;
+    sha256 = hash;
   };
 
   dontBuild = true;
@@ -33,7 +35,9 @@
     runHook preInstall
 
     mkdir -p $out/bin $out/lib/kotlin-lsp
-    cp * $out/lib/kotlin-lsp
+    cp -r * $out/lib/kotlin-lsp
+    chmod +x $out/lib/kotlin-lsp/jre/bin/java
+    chmod +x $out/lib/kotlin-lsp/kotlin-lsp.sh
     ln -s $out/lib/kotlin-lsp/kotlin-lsp.sh $out/bin/kotlin-lsp
 
     runHook postInstall
