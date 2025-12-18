@@ -2,10 +2,9 @@
   lib,
   stdenv,
   fetchzip,
-  makeWrapper,
 }:
 
-stdenv.mkDerivation rec {
+(stdenv.mkDerivation rec {
   pname = "kotlin-lsp";
   version = "261.13587.0";
   platformSuffix = lib.attrByPath [ stdenv.hostPlatform.system ] (throw "unsupported platform: ${stdenv.hostPlatform.system}") {
@@ -15,7 +14,7 @@ stdenv.mkDerivation rec {
     "aarch64-darwin" = "macos-aarch64";
   };
 
-  hashes = {
+  hash = lib.attrByPath [ stdenv.hostPlatform.system ] (throw "unsupported platform: ${stdenv.hostPlatform.system}") {
     "x86_64-linux"  = "sha256-dc0ed2e70cb0d61fdabb26aefce8299b7a75c0dcfffb9413715e92caec6e83ec";
     "aarch64-linux" = "sha256-d1dceb000fe06c5e2c30b95e7f4ab01d05101bd03ed448167feeb544a9f1d651";
     "x86_64-darwin"  =  "sha256-a3972f27229eba2c226060e54baea1c958c82c326dfc971bf53f72a74d0564a3";
@@ -24,8 +23,8 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     stripRoot = false;
-    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-${platformSuffix.${stdenv.hostPlatform.system}}.zip";
-    hash = hashes.${stdenv.hostPlatform.system};
+    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-${platformSuffix}.zip";
+    hash = hash;
   };
 
   dontBuild = true;
@@ -40,10 +39,6 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-  ];
-
   meta = {
     description = "LSP implementation for Kotlin code completion, linting";
     maintainers = with lib.maintainers; [ p-louis ];
@@ -54,4 +49,4 @@ stdenv.mkDerivation rec {
     sourceProvenance = [ lib.sourceTypes.binaryBytecode ];
     mainProgram = "kotlin-lsp";
   };
-}
+})

@@ -95,7 +95,10 @@ rec {
         inherit system;
         config.allowUnfree = true;
       };
-      kotlin-lsp = import ../derivations/kotlin-lsp.nix { inherit pkgs; };
+      stdenv = pkgs.stdenv;
+      lib = pkgs.lib;
+      fetchzip = pkgs.fetchzip;
+      kotlin-lsp = import ../derivations/kotlin-lsp.nix { inherit stdenv lib fetchzip; };
     in
     [
       # language servers
