@@ -83,7 +83,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 catppuccin.setup({
-  flavour = 'frappe',
+  flavour = 'auto',
+  background = {
+    light = 'latte',
+    dark = 'frappe'
+  },
   transparent_background = false,
   integrations = {
     cmp = true,
@@ -93,7 +97,7 @@ catppuccin.setup({
   },
 })
 
---vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('catppuccin')
 --vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
