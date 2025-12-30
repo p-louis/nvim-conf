@@ -91,12 +91,9 @@ catppuccin.setup({
     telescope = true,
     treesitter = true,
   },
-  color_overrides = {
-    frappe = {},
-  },
 })
 
-vim.cmd.colorscheme('catppuccin')
+--vim.cmd.colorscheme('catppuccin')
 --vim.api.nvim_set_hl(0, '@markup.quote', { fg = "#ffe7ff", bold = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
