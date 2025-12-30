@@ -17,7 +17,9 @@ vim.keymap.set('n', '<leader>.', '<cmd>bn<CR>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '<tab>', '<cmd>bn<CR>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '<S-tab>', '<cmd>bp<CR>', { desc = 'Previous Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>bd<CR>', { desc = 'Delete Buffer' })
-vim.keymap.set('n', '<leader>bbbd', '<cmd>bd<CR>', { desc = 'Delete Buffer' })
+
+-- Lua specifics
+vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<CR>', { desc = 'Source Buffer' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -57,18 +59,18 @@ end, { desc = '[G]it [P]ull' })
 vim.keymap.set('n', 'gt', '<cmd>diffget //2<CR>', { desc = 'Get left change' })
 vim.keymap.set('n', 'gn', '<cmd>diffget //3<CR>', { desc = 'Get right change' })
 
-
 -- Umlaute
-vim.keymap.set('i', ',,ae', '<C-k>a:', { desc = 'write ä'})
-vim.keymap.set('i', ',,ue', '<C-k>u:', { desc = 'write ü'})
-vim.keymap.set('i', ',,oe', '<C-k>o:', { desc = 'write ö'})
-vim.keymap.set('i', ',,Ae', '<C-k>A:', { desc = 'write Ä'})
-vim.keymap.set('i', ',,Ue', '<C-k>U:', { desc = 'write Ü'})
-vim.keymap.set('i', ',,Oe', '<C-k>O:', { desc = 'write Ö'})
-vim.keymap.set('i', ',,ss', '<C-k>ss', { desc = 'write ß'})
-vim.keymap.set('i', ',,SS', '<C-k>SS', { desc = 'write ẞ'})
+vim.keymap.set('i', ',,ae', '<C-k>a:', { desc = 'write ä' })
+vim.keymap.set('i', ',,ue', '<C-k>u:', { desc = 'write ü' })
+vim.keymap.set('i', ',,oe', '<C-k>o:', { desc = 'write ö' })
+vim.keymap.set('i', ',,Ae', '<C-k>A:', { desc = 'write Ä' })
+vim.keymap.set('i', ',,Ue', '<C-k>U:', { desc = 'write Ü' })
+vim.keymap.set('i', ',,Oe', '<C-k>O:', { desc = 'write Ö' })
+vim.keymap.set('i', ',,ss', '<C-k>ss', { desc = 'write ß' })
+vim.keymap.set('i', ',,SS', '<C-k>SS', { desc = 'write ẞ' })
 
-vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>', { desc = "Generate Random UID" })
+vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
+  { desc = "Generate Random UID" })
 
 vim.keymap.set('n', '<leader>nn', ':ZkNew<CR>', { desc = '[N]ew [N]ote' })
 vim.keymap.set('n', '<leader>nfn', ':ZkNotes<CR>', { desc = '[F]ind [N]otes by Title' })
@@ -84,31 +86,29 @@ vim.keymap.set('n', '<leader>tc', function()
   local current_line = vim.api.nvim_get_current_line()
   local current_buf = vim.api.nvim_get_current_buf()
   local current_file = vim.api.nvim_buf_get_name(current_buf)
-  local project = string.gsub(string.match(string.gsub(current_file,'/home/fuzzel/',''),'[^/]*/[^/]*'),'/','.')
-  local row,_ = unpack(vim.api.nvim_win_get_cursor(0))
+  local project = string.gsub(string.match(string.gsub(current_file, '/home/fuzzel/', ''), '[^/]*/[^/]*'), '/', '.')
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
 
-  local note = string.sub(string.match(current_line, 'TODO: .*'),7)
+  local note = string.sub(string.match(current_line, 'TODO: .*'), 7)
   local annotation = 'nvimline:' .. row .. ':' .. current_file
-  print('Creating Task ' .. note  .. " in project " .. project)
+  print('Creating Task ' .. note .. " in project " .. project)
   print('Annotating Task with ' .. annotation)
   print('task +todo +work +automation "/' .. note .. '/" annotate ' .. annotation)
 
   vim.fn.system('task add project:' .. project .. ' ' .. note .. ' +todo +work +automation')
   vim.fn.system('task +todo +work +automation "/' .. note .. '/" annotate ' .. annotation)
-
-end,{ desc = "[T]ask [C]reate from TODO"})
+end, { desc = "[T]ask [C]reate from TODO" })
 
 vim.keymap.set('n', '<leader>td', function()
   local current_line = vim.api.nvim_get_current_line()
   local current_buf = vim.api.nvim_get_current_buf()
   local current_file = vim.api.nvim_buf_get_name(current_buf)
-  local project = string.gsub(string.match(string.gsub(current_file,'/home/fuzzel/',''),'[^/]*/[^/]*'),'/','.')
+  local project = string.gsub(string.match(string.gsub(current_file, '/home/fuzzel/', ''), '[^/]*/[^/]*'), '/', '.')
 
-  local note = string.sub(string.match(current_line, 'TODO: .*'),7)
-  print('Task "' .. note  .. '" in project ' .. project .. ' set to done')
+  local note = string.sub(string.match(current_line, 'TODO: .*'), 7)
+  print('Task "' .. note .. '" in project ' .. project .. ' set to done')
   print('task +todo +work +automation "/' .. note .. '/" done')
   vim.fn.system('task +todo +work +automation "/' .. note .. '/" done')
-
-end,{ desc = "Set [T]ask to [D]one"})
+end, { desc = "Set [T]ask to [D]one" })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
