@@ -1,5 +1,5 @@
 -- [[ Basic Keymaps ]]
-vim.keymap.set('n', '<leader>pv', ':Ex<CR>', { desc = 'NetRW' })
+vim.keymap.set('n', '<leader>pv', ':Oil<CR>', { desc = 'NetRW' })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection down' })
