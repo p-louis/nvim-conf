@@ -10,7 +10,7 @@
     self,
     flake-parts,
     ...
-    }:
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       debug = true;
 
@@ -25,29 +25,28 @@
         pkgs,
         system,
         ...
-        }: let
-          inherit (pkgs) alejandra just mkShell;
-        in {
-          apps = {
-            default = {
-              program = "${config.packages.neovim}/bin/nvim";
-              type = "app";
-            };
-          };
-
-          devShells = {
-            default = mkShell {
-              buildInputs = [just];
-            };
-          };
-
-
-          formatter = alejandra;
-
-          packages = {
-            default = self.lib.mkVimPlugin {inherit system;};
-            neovim = self.lib.mkNeovim {inherit system;};
+      }: let
+        inherit (pkgs) alejandra just mkShell;
+      in {
+        apps = {
+          default = {
+            program = "${config.packages.neovim}/bin/nvim";
+            type = "app";
           };
         };
+
+        devShells = {
+          default = mkShell {
+            buildInputs = [just];
+          };
+        };
+
+        formatter = alejandra;
+
+        packages = {
+          default = self.lib.mkVimPlugin {inherit system;};
+          neovim = self.lib.mkNeovim {inherit system;};
+        };
+      };
     };
 }
