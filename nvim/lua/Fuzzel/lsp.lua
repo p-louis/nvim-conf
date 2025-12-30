@@ -103,6 +103,15 @@ local language_servers = {
       },
     }
   },
+  nixd = {
+    settings = {
+      ['nil'] = {
+        formatting = {
+          command = { "alejandra" },
+        },
+      }
+    }
+  },
   ocamllsp = {},
   omnisharp = {
     cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
