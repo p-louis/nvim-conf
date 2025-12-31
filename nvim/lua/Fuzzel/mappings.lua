@@ -12,6 +12,13 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Quickfix Stuff
+vim.keymap.set('n', '<M-j>', ':cnext<CR>', { desc = 'Next QFL Item' })
+vim.keymap.set('n', '<M-k>', ':cprev<CR>', { desc = 'Prev QFL Item' })
+vim.keymap.set('n', '<leader>qfc', ':cclose<CR>', { desc = 'Close QFL' })
+vim.keymap.set('n', '<leader>qfo', ':copen<CR>', { desc = 'Open QFL' })
+vim.keymap.set('n', '<leader>qfd', vim.diagnostic.setqflist, { desc = 'Open QFL' })
+
 -- Buffer motions
 vim.keymap.set('n', '<leader>.', '<cmd>bn<CR>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '<tab>', '<cmd>bn<CR>', { desc = 'Next Buffer' })
