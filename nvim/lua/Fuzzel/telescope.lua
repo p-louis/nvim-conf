@@ -39,11 +39,13 @@ vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
+vim.keymap.set('n', '<leader>flws', require('telescope.builtin').lsp_workspace_symbols,
+  { desc = '[F]ind [W]orkspace [S]ymbols' })
+vim.keymap.set('n', '<leader>flds', require('telescope.builtin').lsp_document_symbols,
+  { desc = '[F]ind [D]ocument [S]ymbols' })
+vim.keymap.set('n', '<leader>flr', require('telescope.builtin').lsp_references, { desc = '[F]ind [R]eferences' })
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[F]ind [B]uffer' })
 vim.keymap.set('n', '<leader>fc', '<Cmd>TodoTelescope<CR>', { desc = '[F]ind TODO [C]omments' })
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-
-
-
