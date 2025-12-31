@@ -75,6 +75,7 @@ in rec {
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
     vimPlugins.render-markdown-nvim
+    vimPlugins.luasnip
 
     # configuration
     fuzzelNvim
