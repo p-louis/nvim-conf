@@ -107,7 +107,7 @@ local language_servers = {
   },
   nixd = {
     settings = {
-      ['nil'] = {
+      nixd = {
         formatting = {
           command = { "alejandra" },
         },
