@@ -10,12 +10,11 @@ require('Fuzzel.mappings')
 require('Fuzzel.settings')
 require('Fuzzel.theme')
 require('Fuzzel.autocmds')
+require('Fuzzel.snippets')
 
 require('Fuzzel.telescope')
 require('Fuzzel.undotree')
 require('Fuzzel.treesitter')
 require('Fuzzel.oil')
 
-
--- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
