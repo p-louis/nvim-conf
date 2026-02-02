@@ -63,16 +63,6 @@ end, { desc = '[G]it [P]ull' })
 vim.keymap.set('n', 'gt', '<cmd>diffget //2<CR>', { desc = 'Get left change' })
 vim.keymap.set('n', 'gn', '<cmd>diffget //3<CR>', { desc = 'Get right change' })
 
--- Umlaute
-vim.keymap.set('i', ',,ae', '<C-k>a:', { desc = 'write ä' })
-vim.keymap.set('i', ',,ue', '<C-k>u:', { desc = 'write ü' })
-vim.keymap.set('i', ',,oe', '<C-k>o:', { desc = 'write ö' })
-vim.keymap.set('i', ',,Ae', '<C-k>A:', { desc = 'write Ä' })
-vim.keymap.set('i', ',,Ue', '<C-k>U:', { desc = 'write Ü' })
-vim.keymap.set('i', ',,Oe', '<C-k>O:', { desc = 'write Ö' })
-vim.keymap.set('i', ',,ss', '<C-k>ss', { desc = 'write ß' })
-vim.keymap.set('i', ',,SS', '<C-k>SS', { desc = 'write ẞ' })
-
 vim.keymap.set('n', '<leader>gr', ':r !tr -dc a-z0-9 < /dev/urandom | head -c 36;echo<CR>',
   { desc = "Generate Random UID" })
 

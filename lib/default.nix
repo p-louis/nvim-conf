@@ -1,25 +1,9 @@
 {inputs}: let
   inherit (inputs.nixpkgs) legacyPackages;
 in rec {
-  mkVimPlugin = {system}: let
-    inherit (pkgs) vimUtils;
-    inherit (vimUtils) buildVimPlugin;
-    pkgs = legacyPackages.${system};
-  in
-    buildVimPlugin {
-      name = "Fuzzel";
-      postInstall = ''
-        rm -rf $out/init.lua
-      '';
-      src = ../nvim;
-
-      nvimRequireCheck = ["Fuzzel.mappings"];
-    };
-
   mkNeovimPlugins = {system}: let
     inherit (pkgs) vimPlugins;
     pkgs = legacyPackages.${system};
-    fuzzelNvim = mkVimPlugin {inherit system;};
   in [
     # languages
     vimPlugins.nvim-lspconfig
@@ -76,9 +60,6 @@ in rec {
     vimPlugins.trouble-nvim
     vimPlugins.render-markdown-nvim
     vimPlugins.luasnip
-
-    # configuration
-    fuzzelNvim
   ];
 
   mkExtraPackages = {system}: let
@@ -123,12 +104,6 @@ in rec {
     python3Packages.black
   ];
 
-  mkExtraConfig = ''
-    lua << EOF
-      require('Fuzzel')
-    EOF
-  '';
-
   mkNeovim = {system}: let
     inherit (pkgs) lib neovim;
     extraPackages = mkExtraPackages {inherit system;};
@@ -138,7 +113,6 @@ in rec {
     neovim.override {
       configure = {
         packages.main = {inherit start;};
-        customRC = mkExtraConfig;
       };
       extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
       withNodeJs = true;
@@ -147,15 +121,21 @@ in rec {
     };
 
   mkHomeManager = {system}: let
-    extraConfig = mkExtraConfig;
     extraPackages = mkExtraPackages {inherit system;};
     plugins = mkNeovimPlugins {inherit system;};
   in {
-    inherit extraConfig extraPackages plugins;
+    inherit extraPackages plugins;
     defaultEditor = true;
     enable = true;
     withNodeJs = true;
     withPython3 = true;
     withRuby = true;
+  };
+
+  mkConfig = _: {
+    nvim = {
+      source = ./nvim;
+      recursive = true;
+    };
   };
 }
